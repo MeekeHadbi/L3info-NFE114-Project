@@ -1,4 +1,7 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for, session
+from flask_mysqldb import MySQL
+import MySQLdb.cursors
+import re
 from flask import g
 from datetime import datetime, timedelta
 import time
@@ -28,6 +31,10 @@ def connect_db():
 @app.route('/')
 def index():
     return render_template("index.html")
+
+@app.route('/connexion')
+def login():
+    return render_template("connexion.html")
 
 
 if __name__ == '__main__':
